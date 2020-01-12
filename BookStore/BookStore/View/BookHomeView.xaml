@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookStore.View.BookHomeView" 
+             BackgroundColor="White"
+             x:Name="BookHomeView">
+    <ContentPage.Content>
+      
+
+            <StackLayout >
+
+                <StackLayout BackgroundColor="{StaticResource BackgroudColor}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" WidthRequest="30">
+                    <Label Text="Mobile Book Store"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   TextColor="{StaticResource TitleTextColor}"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand" >
+                <StackLayout Orientation="Horizontal" Padding="10,0">
+                    <Label Text="All" FontSize="10" Margin="0,4,0,0"/>
+                    <Switch Toggled="Switch_Toggled"/>
+                    <Label Text="Favorites Only" FontSize="10" Margin="0,4,0,0"/>
+
+                </StackLayout>
+                    <ListView 
+              ItemsSource="{Binding BookList}"
+              HasUnevenRows="True"
+              VerticalOptions="FillAndExpand"
+                RowHeight="160" IsVisible="{Binding IsListVisible}">
+
+                        <!-- BindingContext here is ModelPair, which has Item1 and Item2 -->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50*" />
+                                        <ColumnDefinition Width="50*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" BindingContext="{Binding Item1}" Padding="0,10">
+
+                                            <Image Source="{ Binding volumeInfo.imageLinks.image}" Aspect="AspectFit" HeightRequest="120" WidthRequest="80">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.BookTapCommand, Source={x:Reference Name=BookHomeView}}" CommandParameter="{Binding id}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+
+                                        </StackLayout>
+
+                                    <StackLayout Grid.Column="1" BindingContext="{Binding Item2}" Padding="0,10">
+                                            <Image Source="{ Binding volumeInfo.imageLinks.image}" Aspect="AspectFit" HeightRequest="120" WidthRequest="80">
+                                                <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.BookTapCommand, Source={x:Reference Name=BookHomeView}}" CommandParameter="{Binding id}"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+
+                                </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                <Label FontSize="10" Margin="10" Text="You dont have no favorite books" IsVisible="{Binding IsLabelVisible}"/>
+            </StackLayout>
+            </StackLayout>
+
+        
+
+    </ContentPage.Content>
+</ContentPage>

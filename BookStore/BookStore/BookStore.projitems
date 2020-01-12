@@ -16,8 +16,38 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Architecture\API.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Architecture\Data\BookModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Architecture\Data\BooksDB.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Architecture\Enum\BookAvailabilityEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BooksModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BooksDetailedViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BooksViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\BookDetailedView.xaml.cs">
+      <DependentUpon>BookDetailedView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\BookHomeView.xaml.cs">
+      <DependentUpon>BookHomeView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\BookHomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\BookDetailedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
